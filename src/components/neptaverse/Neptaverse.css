@@ -1,0 +1,13 @@
+@font-face {
+  font-family: 'Bioweapon';
+  src: url('../../assets/BIOWEAPON.ttf');
+  format: 'opentype';
+}
+
+.neptaverse-heading {
+  font-family: 'Bioweapon';
+}
+
+.neptaverse-heading span {
+  text-shadow: #431f65;
+}

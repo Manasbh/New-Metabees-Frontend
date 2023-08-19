@@ -1,0 +1,90 @@
+.view-video-container {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Adjust the height as needed */
+  overflow: hidden;
+}
+
+.view-video-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.view-video-content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.view-enter-btn {
+  font-size: 1.2rem;
+  padding: 1rem 2.5rem;
+  margin-top: 30px;
+  border: none;
+  outline: none;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  background-color: rgb(14, 14, 26);
+  color: rgb(234, 234, 234);
+  font-weight: 700;
+  transition: 0.6s;
+  box-shadow: 0px 0px 60px #431f65;
+  -webkit-box-reflect: below 10px
+    linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
+}
+
+.view-enter-btn:active {
+  scale: 0.92;
+}
+
+.view-enter-btn:hover {
+  background: rgb(44, 2, 78);
+  background: linear-gradient(
+    270deg,
+    rgba(41, 2, 78, 0.681) 0%,
+    rgba(158, 31, 232, 0.873) 60%
+  );
+  color: rgb(4, 4, 38);
+}
+
+.view-input-box {
+  max-width: 350px;
+  height: 45px;
+  width: 100%;
+  outline: none;
+  font-size: 20px;
+  border-radius: 5px;
+  padding-left: 15px;
+  border: 1px solid #ccc;
+  border-bottom-width: 2px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.view-input-box:valid {
+  border-color: #8c00ff;
+  color: #8400ff;
+  box-shadow: 2px 2px 8px 1px #8400ff;
+}
+
+.view-input-box:invalid {
+  border-color: #ff0000;
+  color: #ff0000;
+  box-shadow: 2px 2px 8px 1px #ff0000;
+  /* translate: -8px 8px 0px 0px; */
+}
+
+.view-text {
+  margin-top: 10px;
+  color: black;
+}

@@ -1,0 +1,107 @@
+.contact-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.contact-form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  background-image: linear-gradient(45deg, #081e33, #2e1747);
+  border-radius: 2.5em;
+  padding: 30px;
+  width: 300px;
+  height: 350px;
+  position: relative;
+}
+
+.contact-form::before {
+  content: '';
+  background-image: linear-gradient(45deg, #510bd3, #547ed8);
+  height: 358px;
+  width: 309px;
+  position: absolute;
+  top: -4px; /* Adjust the value */
+  left: -4px; /* Adjust the value */
+  z-index: -1;
+  border-radius: 2.7em;
+}
+
+.contact-button {
+  margin-top: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 17px;
+  background: #093ca8;
+  color: black;
+  padding: 0.7em 5.5em;
+  display: flex;
+  align-items: center;
+  border: 2px solid #66da4300;
+  border-radius: 5em;
+  overflow: hidden;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.contact-button:hover {
+  border: 2px solid #5303bd;
+  background: #00000000;
+  color: #ffffff;
+}
+
+.contact-button:active {
+  border: 2px solid #66da4300;
+  background: #ff5900;
+  color: black;
+}
+
+.contact-input {
+  width: calc(100% - 10px);
+  padding: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #66da4300;
+  border-bottom: 1px solid #00aeff;
+  outline: none;
+  background-color: transparent;
+  color: #ff5900;
+  font-family: Arial, Helvetica, sans-serif;
+  transition: 0.2s;
+}
+
+.contact-input:focus {
+  border: 1px solid #66da4300;
+  border-bottom: 1px solid #ff5900;
+  background-color: transparent;
+  color: white;
+}
+
+.contact-input::placeholder {
+  color: #9b725b;
+}
+
+.contact-textarea {
+  font-family: Arial, Helvetica, sans-serif;
+  width: calc(100% - 10px);
+  padding: 8px;
+  height: 100px;
+  margin-bottom: 20px;
+  border: 1px solid #66da4300;
+  border-bottom: 1px solid #00aeff;
+  outline: none;
+  background-color: transparent;
+  color: #1b6839;
+}
+
+.contact-textarea::placeholder {
+  color: #9b725b;
+}
+
+.contact-textarea:focus {
+  border: 1px solid #66da4300;
+  border-bottom: 1px solid #ff5900;
+  background-color: transparent;
+  color: white;
+}
