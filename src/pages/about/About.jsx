@@ -57,7 +57,7 @@ function About() {
           </div>
         </div>
         {/* TEAM */}
-        <div className="grid grid-cols-1 ml-5 gap-4 gap-y-6 border-b border-[#b865db] py-12 pb-20 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 lg:ml-32 gap-4 gap-y-6 py-12 pb-20 md:grid-cols-2 lg:grid-cols-3">
           <TeamCard
             name="Manas Bhasin"
             role="Founder"
