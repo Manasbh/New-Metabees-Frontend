@@ -14,7 +14,7 @@ function LogIn() {
     const email = document.getElementById('email').value
     const password = document.getElementById('password').value
     await Axios.post(
-      `http://ec2-13-228-183-209.ap-southeast-1.compute.amazonaws.com:5000/auth/login`,
+      `http://metafont.tech:5000/auth/login`,
       {
         email: email,
         password: password,
@@ -94,7 +94,7 @@ function LogIn() {
               src={google}
               alt="google"
               onClick={() => {
-                window.location.href = `http://ec2-13-228-183-209.ap-southeast-1.compute.amazonaws.com:5000/auth/google`
+                window.location.href = `http://metafont.tech:5000/auth/google`
               }}
             />
           </div>

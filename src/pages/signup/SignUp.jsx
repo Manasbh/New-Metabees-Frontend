@@ -24,7 +24,7 @@ function SignUp() {
     }
 
     await Axios.post(
-      `http://ec2-13-228-183-209.ap-southeast-1.compute.amazonaws.com:5000/auth/signup`,
+      `http://metafont.tech:5000/auth/signup`,
       {
         email: email,
         fullname: fullname,
@@ -133,10 +133,7 @@ function SignUp() {
               src={google}
               alt="google"
               onClick={() =>
-                window.open(
-                  `http://ec2-13-228-183-209.ap-southeast-1.compute.amazonaws.com:5000/auth/google`,
-                  ''
-                )
+                window.open(`http://metafont.tech:5000/auth/google`, '')
               }
             />
             <div className="flex flex-col items-center mt-4">

@@ -21,7 +21,7 @@ function Home() {
   const [loaded, setLoaded] = useState(false)
 
   useEffect(() => {
-    Axios.get(`${process.env.BACKEND_URL}/auth/login/success`)
+    Axios.get(`http://metafont.tech:5000/auth/login/success`)
       .then((response) => {})
       .catch((e) => {
         console.log(e)

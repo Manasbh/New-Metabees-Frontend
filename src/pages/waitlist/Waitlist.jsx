@@ -15,7 +15,7 @@ export default function Waitlist() {
 
     try {
       await axios.post(
-        `https://metafont.tech:5000/waitlist`,
+        `http://metafont.tech:5000/waitlist`,
         {
           email: email,
           name: name,
