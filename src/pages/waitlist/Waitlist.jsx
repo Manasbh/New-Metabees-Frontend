@@ -15,7 +15,7 @@ export default function Waitlist() {
 
     try {
       await axios.post(
-        `${process.env.BACKEND_URL}/waitlist`,
+        `http://ec2-13-228-183-209.ap-southeast-1.compute.amazonaws.com:5000/waitlist`,
         {
           email: email,
           name: name,

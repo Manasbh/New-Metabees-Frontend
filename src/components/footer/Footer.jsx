@@ -45,14 +45,14 @@ function Footer() {
                 </a>
               </div>
               <div className="w-auto p-1.5">
-                <a href="#">
+                <a href="https://www.instagram.com/metabees.in/">
                   <div className="flex h-8 w-8 items-center justify-center">
                     <img src={instagram} alt="instagram" />
                   </div>
                 </a>
               </div>
               <div className="w-auto p-1.5">
-                <a href="#">
+                <a href="https://twitter.com/MetabeesI94077">
                   <div className="flex h-8 w-8 items-center justify-center">
                     <img src={twitter} alt="twitter" />
                   </div>

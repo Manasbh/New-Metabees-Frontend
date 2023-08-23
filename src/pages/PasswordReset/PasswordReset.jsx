@@ -9,7 +9,7 @@ const PasswordReset = () => {
   const [msg, setMsg] = useState('')
   const [error, setError] = useState('')
   const param = useParams()
-  const url = `${process.env.BACKEND_URL}/auth/reset-password/${param.id}/${param.token}`
+  const url = `http://ec2-13-228-183-209.ap-southeast-1.compute.amazonaws.com:5000/auth/reset-password/${param.id}/${param.token}`
 
   const handleSubmit = async (e) => {
     e.preventDefault()

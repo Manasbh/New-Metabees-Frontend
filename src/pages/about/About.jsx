@@ -1,5 +1,3 @@
-'use client'
-
 import { useNavigate } from 'react-router-dom'
 import TeamCard from '../../components/teamcard/TeamCard'
 import about from '../../assets/about.jpg'

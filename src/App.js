@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { useState, useEffect } from 'react'
 import Navbar from './components/navbar/Navbar'
 import SignUp from './pages/signup/SignUp'
 import LogIn from './pages/login/LogIn'
@@ -9,6 +10,7 @@ import ForgotPassword from './pages/ForgotPassword/ForgotPassword'
 import PasswordReset from './pages/PasswordReset/PasswordReset'
 import Waitlist from './pages/waitlist/Waitlist'
 import Contact from './pages/contact/Contact'
+import Loading from './components/loadingspinner/Loading'
 
 import { UserContextProvider } from './utils/UserContext'
 

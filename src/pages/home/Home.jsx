@@ -10,13 +10,15 @@ import vr from '../../assets/vr.png'
 import amazon from '../../assets/amazon.png'
 import buildspace from '../../assets/buildspace.jpg'
 import microsoft from '../../assets/microsoft.png'
-import { useEffect } from 'react'
+import Loading from '../../components/loadingspinner/Loading'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Axios from 'axios'
 import './Home.css'
 
 function Home() {
   const navigate = useNavigate()
+  const [loaded, setLoaded] = useState(false)
 
   useEffect(() => {
     console.log('using effect')
@@ -31,8 +33,15 @@ function Home() {
   return (
     <div>
       {/* Home Video */}
+      {!loaded && <Loading />}
       <div className="video-container">
-        <video autoPlay loop muted className="video-background">
+        <video
+          autoPlay
+          loop
+          muted
+          className="video-background"
+          onLoadedData={() => setLoaded(true)}
+        >
           <source src={websiteBg} type="video/mp4" />
         </video>
         <div className="bg-transparent text-white video-content">
@@ -99,7 +108,14 @@ function Home() {
 
       {/* Multiple Worlds */}
       <div className="mt-10 mb-2 video-container">
-        <video autoPlay loop muted className="video-background">
+        {!loaded && <Loading />}
+        <video
+          autoPlay
+          loop
+          muted
+          className="video-background"
+          onLoadedData={() => setLoaded(true)}
+        >
           <source src={multipleWorlds} type="video/mp4" />
         </video>
         <div className="bg-transparent text-white video-content">
