@@ -21,11 +21,8 @@ function Home() {
   const [loaded, setLoaded] = useState(false)
 
   useEffect(() => {
-    console.log('using effect')
     Axios.get(`${process.env.BACKEND_URL}/auth/login/success`)
-      .then((response) => {
-        console.log(response.data)
-      })
+      .then((response) => {})
       .catch((e) => {
         console.log(e)
       })

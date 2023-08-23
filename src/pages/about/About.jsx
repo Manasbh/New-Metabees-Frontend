@@ -98,7 +98,12 @@ function About() {
             </button>
           </div>
           <div className="md:mt-o mt-10 w-full">
-            <img src={about} alt="Getting Started" className="rounded-lg" />
+            <img
+              src={about}
+              alt="Getting Started"
+              className="rounded-lg"
+              loading="lazy"
+            />
           </div>
         </div>
       </div>

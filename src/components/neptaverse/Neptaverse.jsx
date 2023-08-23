@@ -9,6 +9,7 @@ export default function Neptaverse() {
           className="h-auto w-auto sm:mt-5"
           src={neptaverse8}
           alt="Neptaverse"
+          loading="lazy"
         />
         <div className="ml-2 flex flex-col mt-10 lg:mt-32">
           <h3 className="text-[#864bc9] max-sm:text-center text-2xl font-bold mb-5 neptaverse-heading">
