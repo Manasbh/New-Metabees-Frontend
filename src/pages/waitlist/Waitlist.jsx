@@ -15,7 +15,7 @@ export default function Waitlist() {
 
     try {
       await axios.post(
-        `https://web-production-5ee8.up.railway.app//waitlist`,
+        `https://web-production-5ee8.up.railway.app/waitlist`,
         {
           email: email,
           name: name,
