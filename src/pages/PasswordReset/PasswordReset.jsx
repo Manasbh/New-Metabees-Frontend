@@ -9,7 +9,7 @@ const PasswordReset = () => {
   const [msg, setMsg] = useState('')
   const [error, setError] = useState('')
   const param = useParams()
-  const url = `http://metafont.tech:5000/auth/reset-password/${param.id}/${param.token}`
+  const url = `https://web-production-5ee8.up.railway.app/auth/reset-password/${param.id}/${param.token}`
 
   const handleSubmit = async (e) => {
     e.preventDefault()

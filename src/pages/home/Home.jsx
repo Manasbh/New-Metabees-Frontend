@@ -21,7 +21,7 @@ function Home() {
   const [loaded, setLoaded] = useState(false)
 
   useEffect(() => {
-    Axios.get(`http://metafont.tech:5000/auth/login/success`)
+    Axios.get(`https://web-production-5ee8.up.railway.app/auth/login/success`)
       .then((response) => {})
       .catch((e) => {
         console.log(e)

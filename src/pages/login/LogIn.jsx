@@ -14,7 +14,7 @@ function LogIn() {
     const email = document.getElementById('email').value
     const password = document.getElementById('password').value
     await Axios.post(
-      `http://metafont.tech:5000/auth/login`,
+      `https://web-production-5ee8.up.railway.app/auth/login`,
       {
         email: email,
         password: password,
@@ -94,7 +94,7 @@ function LogIn() {
               src={google}
               alt="google"
               onClick={() => {
-                window.location.href = `http://metafont.tech:5000/auth/google`
+                window.location.href = `https://web-production-5ee8.up.railway.app/auth/google`
               }}
             />
           </div>

@@ -24,7 +24,7 @@ function SignUp() {
     }
 
     await Axios.post(
-      `http://metafont.tech:5000/auth/signup`,
+      `https://web-production-5ee8.up.railway.app/auth/signup`,
       {
         email: email,
         fullname: fullname,
@@ -133,7 +133,10 @@ function SignUp() {
               src={google}
               alt="google"
               onClick={() =>
-                window.open(`http://metafont.tech:5000/auth/google`, '')
+                window.open(
+                  `https://web-production-5ee8.up.railway.app/auth/google`,
+                  ''
+                )
               }
             />
             <div className="flex flex-col items-center mt-4">

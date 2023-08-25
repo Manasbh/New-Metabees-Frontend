@@ -10,7 +10,7 @@ const ForgotPassword = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      const url = `http://metafont.tech:5000/auth/forgot-password`
+      const url = `https://web-production-5ee8.up.railway.app/auth/forgot-password`
       const { data } = await axios.post(url, { email })
       setMsg(data.message)
       setError('')
