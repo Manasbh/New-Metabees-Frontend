@@ -1,13 +1,13 @@
-import neptaverse8 from '../../assets/neptaverse8.jpg'
+import neptaverse from '../../assets/ContentImages/neptaverse.jpg'
+import './Neptaverse.css'
 
 export default function Neptaverse() {
   return (
     <div className="container mx-auto">
       <div className="container mt-10 m-auto grid lg:grid-cols-2 gap-2">
-        {/* Add an image and size it according to the div */}
         <img
-          className="h-auto w-auto sm:mt-5"
-          src={neptaverse8}
+          className="h-auto w-auto sm:mt-5 neptaverse-image"
+          src={neptaverse}
           alt="Neptaverse"
           loading="lazy"
         />

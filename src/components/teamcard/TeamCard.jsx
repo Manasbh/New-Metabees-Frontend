@@ -23,6 +23,7 @@ const TeamCard = (props) => {
             </svg>
           </button>
         </a>
+
         <a href={props.linkedinlink} target="blank">
           <button className="team-card-socials-btn team-linkedin">
             <svg

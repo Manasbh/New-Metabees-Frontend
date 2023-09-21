@@ -11,3 +11,8 @@
 .neptaverse-heading span {
   text-shadow: #431f65;
 }
+
+.neptaverse-image {
+  border: 1px solid #431f65;
+  border-radius: 50%;
+}

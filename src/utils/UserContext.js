@@ -1,14 +1,16 @@
-import { createContext,useState } from "react";
+import { createContext, useState, useContext } from 'react'
+import { getCookieInfo } from './getCookie'
 
-export const UserContext = createContext({});
+export const UserContext = createContext({})
 
+export const UserContextProvider = ({ children }) => {
+  const [user, setUser] = useState(getCookieInfo())
 
-export const UserContextProvider = ({children}) => {
-    const [userInfo,setUserInfo] = useState({});
-
-    return (
-        <UserContext.Provider value={{userInfo,setUserInfo}}>
-            {children}
-        </UserContext.Provider>
-    )
+  return (
+    <UserContext.Provider value={{ user, setUser }}>
+      {children}
+    </UserContext.Provider>
+  )
 }
+
+export const useUser = () => useContext(UserContext)

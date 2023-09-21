@@ -1,32 +1,30 @@
-import websiteBg from '../../assets/websiteBg.mp4'
-import multipleWorlds from '../../assets/multipleWorlds.mp4'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import Pricings from '../../components/pricing/Pricings'
 import Footer from '../../components/footer/Footer'
 import Neptaverse from '../../components/neptaverse/Neptaverse'
-import computer from '../../assets/computer.png'
-import mobile from '../../assets/mobile.png'
-import tablet from '../../assets/tablet.png'
-import vr from '../../assets/vr.png'
-import amazon from '../../assets/amazon.png'
-import buildspace from '../../assets/buildspace.jpg'
-import microsoft from '../../assets/microsoft.png'
 import Loading from '../../components/loadingspinner/Loading'
-import { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
-import Axios from 'axios'
+import computer from '../../assets/ContentImages/computer.png'
+import mobile from '../../assets/ContentImages/mobile.png'
+import tablet from '../../assets/ContentImages/tablet.png'
+import vr from '../../assets/ContentImages/vr.png'
+import amazon from '../../assets/ContentImages/amazon.png'
+import microsoft from '../../assets/ContentImages/microsoft.png'
+import buildspace from '../../assets/ContentImages/buildspace.jpg'
+import multipleWorlds from '../../assets/ContentImages/multipleWorlds.mp4'
+import websiteBg from '../../assets/ContentImages/websiteBg.mp4'
 import './Home.css'
 
 function Home() {
   const navigate = useNavigate()
   const [loaded, setLoaded] = useState(false)
 
-  useEffect(() => {
-    Axios.get(`https://web-production-5ee8.up.railway.app/auth/login/success`)
-      .then((response) => {})
-      .catch((e) => {
-        console.log(e)
-      })
-  }, [])
+  const videoloaded = () => {
+    setTimeout(() => {
+      setLoaded(true)
+    }, 2000)
+  }
+
   return (
     <div>
       {/* Home Video */}
@@ -37,7 +35,7 @@ function Home() {
           loop
           muted
           className="video-background"
-          onLoadedData={() => setLoaded(true)}
+          onLoadedData={videoloaded}
         >
           <source src={websiteBg} type="video/mp4" />
         </video>

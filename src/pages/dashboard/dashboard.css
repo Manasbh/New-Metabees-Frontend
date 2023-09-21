@@ -1,0 +1,453 @@
+.dashboard-bg {
+  height: 100vh;
+  width: 100vw;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-image: url('../../assets/PageBackgrounds/dashboardBg.jpg');
+}
+
+/* Add Product Button */
+
+.dashboard-add-btn {
+  height: 50px;
+  margin: 20px;
+  margin-bottom: 40px;
+  position: relative;
+  width: 155px;
+}
+
+.dashboard-add-btn a {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 30px;
+  box-shadow: 0 15px 35px rgba(255, 255, 255, 0.2);
+  color: #fff;
+  display: flex;
+  font-size: 12px;
+  font-weight: 700;
+  left: 0;
+  top: 0;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  letter-spacing: 1px;
+  text-decoration: none;
+  overflow: hidden;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(15px);
+  z-index: 1;
+  transition: 0.5s;
+}
+
+.dashboard-add-btn:hover a {
+  letter-spacing: 2px;
+}
+
+.dashboard-add-btn a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to left, rgba(255, 255, 255, 0.15), transparent);
+  transform: skewX(45deg) translateX(0);
+  transition: 0.5s;
+}
+
+.dashboard-add-btn:hover a::before {
+  transform: skewX(45deg) translateX(200%);
+}
+
+.dashboard-add-btn::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -5px;
+  height: 10px;
+  width: 30px;
+  background: rgb(10, 163, 23);
+  border-radius: 10px;
+  transition: 0.5s;
+  transition-delay: 0s;
+}
+
+.dashboard-add-btn:hover::before {
+  bottom: 0;
+  height: 50%;
+  width: 80%;
+  border-radius: 30px;
+  transition-delay: 0.5s;
+}
+
+.dashboard-add-btn::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -5px;
+  height: 10px;
+  width: 30px;
+  background: rgb(10, 163, 23);
+  border-radius: 10px;
+  transition: 0.5s;
+  transition-delay: 0s;
+}
+
+.dashboard-add-btn:hover::after {
+  top: 0;
+  height: 50%;
+  width: 80%;
+  border-radius: 30px;
+  transition-delay: 0.5s;
+}
+
+.dashboard-add-btn:nth-child(1):before,
+.dashboard-add-btn:nth-child(1)::after {
+  /* background: rgb(76, 10, 163); */
+  box-shadow: 0 0 5px rgb(76, 10, 163), 0 0 15px rgb(76, 10, 163),
+    0 0 30px rgb(76, 10, 163), 0 0 60px rgb(76, 10, 163);
+}
+
+.dashboard-add-btn:active a {
+  color: #000;
+}
+
+/* Payment Button */
+
+.dashboard-payment-btn {
+  height: 50px;
+  margin: 20px;
+  margin-bottom: 40px;
+  position: relative;
+  width: 155px;
+}
+
+.dashboard-payment-btn a {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 30px;
+  box-shadow: 0 15px 35px rgba(255, 255, 255, 0.2);
+  color: #fff;
+  display: flex;
+  font-size: 12px;
+  font-weight: 700;
+  left: 0;
+  top: 0;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  letter-spacing: 1px;
+  text-decoration: none;
+  overflow: hidden;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(15px);
+  z-index: 1;
+  transition: 0.5s;
+}
+
+.dashboard-payment-btn:hover a {
+  letter-spacing: 2px;
+}
+
+.dashboard-payment-btn a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to left, rgba(255, 255, 255, 0.15), transparent);
+  transform: skewX(45deg) translateX(0);
+  transition: 0.5s;
+}
+
+.dashboard-payment-btn:hover a::before {
+  transform: skewX(45deg) translateX(200%);
+}
+
+.dashboard-payment-btn::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -5px;
+  height: 10px;
+  width: 30px;
+  background: rgb(201, 61, 26);
+  border-radius: 10px;
+  transition: 0.5s;
+  transition-delay: 0s;
+}
+
+.dashboard-payment-btn:hover::before {
+  bottom: 0;
+  height: 50%;
+  width: 80%;
+  border-radius: 30px;
+  transition-delay: 0.5s;
+}
+
+.dashboard-payment-btn::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -5px;
+  height: 10px;
+  width: 30px;
+  background: rgb(201, 61, 26);
+  border-radius: 10px;
+  transition: 0.5s;
+  transition-delay: 0s;
+}
+
+.dashboard-payment-btn:hover::after {
+  top: 0;
+  height: 50%;
+  width: 80%;
+  border-radius: 30px;
+  transition-delay: 0.5s;
+}
+
+.dashboard-payment-btn:nth-child(1):before,
+.dashboard-payment-btn:nth-child(1)::after {
+  background: rgb(76, 10, 163);
+  box-shadow: 0 0 5px rgb(76, 10, 163), 0 0 15px rgb(76, 10, 163),
+    0 0 30px rgb(76, 10, 163), 0 0 60px rgb(76, 10, 163);
+}
+
+.dashboard-payment-btn:active a {
+  color: #000;
+}
+
+/* View Product Button */
+
+.dashboard-viewprod-btn {
+  height: 50px;
+  margin: 20px;
+  margin-bottom: 40px;
+  position: relative;
+  width: 155px;
+}
+
+.dashboard-viewprod-btn a {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 30px;
+  box-shadow: 0 15px 35px rgba(255, 255, 255, 0.2);
+  color: #fff;
+  display: flex;
+  font-size: 12px;
+  font-weight: 700;
+  left: 0;
+  top: 0;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  letter-spacing: 1px;
+  text-decoration: none;
+  overflow: hidden;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(15px);
+  z-index: 1;
+  transition: 0.5s;
+}
+
+.dashboard-viewprod-btn:hover a {
+  letter-spacing: 2px;
+}
+
+.dashboard-viewprod-btn a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to left, rgba(255, 255, 255, 0.15), transparent);
+  transform: skewX(45deg) translateX(0);
+  transition: 0.5s;
+}
+
+.dashboard-viewprod-btn:hover a::before {
+  transform: skewX(45deg) translateX(200%);
+}
+
+.dashboard-viewprod-btn::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -5px;
+  height: 10px;
+  width: 30px;
+  background: rgb(10, 58, 163);
+  border-radius: 10px;
+  transition: 0.5s;
+  transition-delay: 0s;
+}
+
+.dashboard-viewprod-btn:hover::before {
+  bottom: 0;
+  height: 50%;
+  width: 80%;
+  border-radius: 30px;
+  transition-delay: 0.5s;
+}
+
+.dashboard-viewprod-btn::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -5px;
+  height: 10px;
+  width: 30px;
+  background: rgb(10, 58, 163);
+  border-radius: 10px;
+  transition: 0.5s;
+  transition-delay: 0s;
+}
+
+.dashboard-viewprod-btn:hover::after {
+  top: 0;
+  height: 50%;
+  width: 80%;
+  border-radius: 30px;
+  transition-delay: 0.5s;
+}
+
+.dashboard-viewprod-btn:nth-child(1):before,
+.dashboard-viewprod-btn:nth-child(1)::after {
+  background: rgb(76, 10, 163);
+  box-shadow: 0 0 5px rgb(76, 10, 163), 0 0 15px rgb(76, 10, 163),
+    0 0 30px rgb(76, 10, 163), 0 0 60px rgb(76, 10, 163);
+}
+
+.dashboard-viewprod-btn:active a {
+  color: #000;
+}
+
+/* Marketplace Button */
+
+.dashboard-market-btn {
+  height: 50px;
+  margin: 20px;
+  margin-bottom: 40px;
+  position: relative;
+  width: 155px;
+}
+
+.dashboard-market-btn a {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 30px;
+  box-shadow: 0 15px 35px rgba(255, 255, 255, 0.2);
+  color: #fff;
+  display: flex;
+  font-size: 12px;
+  font-weight: 700;
+  left: 0;
+  top: 0;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  letter-spacing: 1px;
+  text-decoration: none;
+  overflow: hidden;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(15px);
+  z-index: 1;
+  transition: 0.5s;
+}
+
+.dashboard-market-btn:hover a {
+  letter-spacing: 2px;
+}
+
+.dashboard-market-btn a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to left, rgba(255, 255, 255, 0.15), transparent);
+  transform: skewX(45deg) translateX(0);
+  transition: 0.5s;
+}
+
+.dashboard-market-btn:hover a::before {
+  transform: skewX(45deg) translateX(200%);
+}
+
+.dashboard-market-btn::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -5px;
+  height: 10px;
+  width: 30px;
+  background: rgb(194, 23, 185);
+  border-radius: 10px;
+  transition: 0.5s;
+  transition-delay: 0s;
+}
+
+.dashboard-market-btn:hover::before {
+  bottom: 0;
+  height: 50%;
+  width: 80%;
+  border-radius: 30px;
+  transition-delay: 0.5s;
+}
+
+.dashboard-market-btn::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -5px;
+  height: 10px;
+  width: 30px;
+  background: rgb(194, 23, 185);
+  border-radius: 10px;
+  transition: 0.5s;
+  transition-delay: 0s;
+}
+
+.dashboard-market-btn:hover::after {
+  top: 0;
+  height: 50%;
+  width: 80%;
+  border-radius: 30px;
+  transition-delay: 0.5s;
+}
+
+.dashboard-market-btn:nth-child(1):before,
+.dashboard-market-btn:nth-child(1)::after {
+  background: rgb(76, 10, 163);
+  box-shadow: 0 0 5px rgb(76, 10, 163), 0 0 15px rgb(76, 10, 163),
+    0 0 30px rgb(76, 10, 163), 0 0 60px rgb(76, 10, 163);
+}
+
+.dashboard-market-btn:active a {
+  color: #000;
+}

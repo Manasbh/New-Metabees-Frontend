@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import './waitlist.css'
 import axios from 'axios'
+import './waitlist.css'
 
 export default function Waitlist() {
   const [isModalOpen, setModalOpen] = useState(false)

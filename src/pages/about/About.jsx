@@ -1,9 +1,12 @@
 import { useNavigate } from 'react-router-dom'
 import TeamCard from '../../components/teamcard/TeamCard'
-import about from '../../assets/about.jpg'
-import Adi from '../../assets/Adi.jpg'
-import Manas from '../../assets/Manas.jpg'
-import Suvigya from '../../assets/Suvigya.jpg'
+import about from '../../assets/ContentImages/about.jpg'
+import Adi from '../../assets/TeamPhotos/Adi.jpg'
+import Manas from '../../assets/TeamPhotos/Manas.jpg'
+import Suvigya from '../../assets/TeamPhotos/Suvigya.jpg'
+import Sidhart from '../../assets/TeamPhotos/Sidhart.jpeg'
+import Nidheesh from '../../assets/TeamPhotos/Nidheesh.jpg'
+import Ansh from '../../assets/TeamPhotos/Ansh.jpg'
 
 function About() {
   const navigate = useNavigate()
@@ -65,17 +68,35 @@ function About() {
           />
           <TeamCard
             name="Aditya Ranjan"
-            role="Backend Developer"
+            role="Tech Lead"
             linkedinlink="https://www.linkedin.com/in/aditya-ranjan-577242252/"
             githublink="https://github.com/adityar2705"
             photo={Adi}
           />
           <TeamCard
             name="Suvigya Mishra"
-            role="Full Stack Developer"
+            role="Tech Lead"
             linkedinlink="https://www.linkedin.com/in/suvigyamishra/"
             githublink="https://github.com/Crazyhaller"
             photo={Suvigya}
+          />
+          <TeamCard
+            name="Sidhart Chouksey"
+            role="Marketing"
+            linkedinlink="https://www.linkedin.com/in/siddharthchouksey/"
+            photo={Sidhart}
+          />
+          <TeamCard
+            name="Nidheesh Sajwan"
+            role="Marketing"
+            linkedinlink="https://www.linkedin.com/in/nidhish-sajwan-1b5a0825a/"
+            photo={Nidheesh}
+          />
+          <TeamCard
+            name="Ansh Das"
+            role="Finance"
+            linkedinlink="https://www.linkedin.com/in/ansh-das-51559418a/"
+            photo={Ansh}
           />
         </div>
         {/* Hiring Banner */}
@@ -92,7 +113,7 @@ function About() {
             <button
               type="button"
               className="rounded-md bg-[#642b7c] px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-[#e7caf3] hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-              onClick={() => navigate('/waitlist')}
+              onClick={() => navigate('/contact')}
             >
               Apply Here
             </button>

@@ -41,7 +41,7 @@ function Pricings() {
                   <button
                     type="button"
                     className="pricing-btn"
-                    onClick={() => navigate('/waitlist')}
+                    onClick={() => navigate('/signup')}
                   >
                     Choose Plan
                   </button>

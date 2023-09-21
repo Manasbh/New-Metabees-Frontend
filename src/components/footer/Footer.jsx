@@ -1,17 +1,21 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import linkedin from '../../assets/linkedin.svg'
-import instagram from '../../assets/instagram.svg'
-import twitter from '../../assets/twitter.svg'
+import linkedin from '../../assets/FooterIcons/linkedin.svg'
+import instagram from '../../assets/FooterIcons/instagram.svg'
+import twitter from '../../assets/FooterIcons/twitter.svg'
+import logo from '../../assets/logo.png'
 
 function Footer() {
   return (
-    <section className="relative overflow-x-hidden bg-[#15041f] w-full mb-0 sm:flex-col">
+    <section className="relative overflow-x-hidden bg-[#110618] w-full mb-0 sm:flex-col">
       <div className="container relative z-10 mx-auto px-4">
         <div className=" flex flex-wrap items-center justify-between">
           <div className="w-auto p-8">
             <a href="#">
-              <div className="inline-flex items-center text-white font-bold hover:text-[#19A7CE]">
-                Metabees
+              <div className="flex gap-1 items-center justify-center">
+                <img src={logo} alt="logo" className="h-6 w-6" />
+                <div className="inline-flex items-center text-white font-bold hover:text-[#19A7CE]">
+                  Metabees
+                </div>
               </div>
             </a>
           </div>

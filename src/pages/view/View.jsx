@@ -1,11 +1,11 @@
-import bgVideo from '../../assets/homeBg.mp4'
+import bgVideo from '../../assets/PageBackgrounds/viewBg.mp4'
 import { useNavigate } from 'react-router'
 import './View.css'
 
 const View = () => {
   const navigate = useNavigate()
   const onSubmit = () => {
-    navigate('/waitlist')
+    navigate('/signup')
   }
 
   return (
@@ -26,11 +26,11 @@ const View = () => {
           <span className="text-[#853cda]">Li</span>
           <span className="text-[#9252db]">nk</span>
         </h1>
-        <div class="view-input-container">
+        <div className="view-input-container">
           <input
             type="text"
             name="text"
-            class="view-input-box"
+            className="view-input-box"
             placeholder="Enter Text"
             required=""
           />
