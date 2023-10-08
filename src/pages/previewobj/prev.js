@@ -3,12 +3,22 @@ import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import './awitch.css';
+import { useUser } from '../../utils/UserContext';
+import { useHistory } from 'react-router-dom';
 
 const Preview = () => {
   const canvasRef = useRef(null);
   const [scaleFactor, setScaleFactor] = useState(1);
+  const user = useUser();
+  const history = useHistory();
 
   useEffect(() => {
+    if (!user) {
+      // If user is not logged in, redirect to /login
+      history.push('/login');
+      return;
+    }
+
     let scene, camera, renderer, model, controls;
 
     const handleResize = () => {
@@ -61,11 +71,16 @@ const Preview = () => {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, [scaleFactor]); // Add scaleFactor to dependency array
+  }, [scaleFactor, user, history]); // Add user and history to the dependency array
 
   // Function to handle button click and adjust the scale factor
   const handleButtonClick = (factor) => {
     setScaleFactor(factor);
+  };
+
+  // Function to handle publish button click and redirect to /published
+  const handlePublishClick = () => {
+    history.push('/published');
   };
 
   return (
@@ -104,7 +119,7 @@ const Preview = () => {
         </div>
       </div>
       {/* Button in the bottom right */}
-      <button className="cssbuttons-io-button" style={{ position: 'fixed', bottom: '20px', right: '20px' }}>
+      <button className="cssbuttons-io-button" style={{ position: 'fixed', bottom: '20px', right: '20px' }} onClick={handlePublishClick}>
         Publish
         <div className="icon">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
