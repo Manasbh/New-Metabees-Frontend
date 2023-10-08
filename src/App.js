@@ -14,6 +14,7 @@ import Upload from './pages/addproduct/Upload'
 import ViewProduct from './pages/viewproduct/ViewProduct'
 import Market from './pages/marketplace/Market'
 import { UserContextProvider } from './utils/UserContext'
+import Preview from './pages/previewobj/prev'
 
 function App() {
   return (
@@ -33,10 +34,10 @@ function App() {
           <Route path="/viewproduct" element={<ViewProduct />} />
           <Route path="/marketplace" element={<Market />} />
           <Route path="/forgotpassword" element={<ForgotPassword />} />
-          <Route
-            path="/auth/reset-password/:id/:token"
-            element={<PasswordReset />}
-          />
+          <Route path="/preview" element={<Preview />} />
+          <Route path="/auth/reset-password/:id/:token" element={<PasswordReset />} />
+
+          <Route path="*" element={<Navigate to="/login" replace />} />
         </Routes>
       </Router>
     </UserContextProvider>
@@ -44,3 +45,4 @@ function App() {
 }
 
 export default App
+
