@@ -12,32 +12,51 @@ const Upload = () => {
   const { user } = useUser()
 
   const handleFileUpload = (event) => {
-    event.preventDefault()
+    event.preventDefault();
     if (!selectedFile) {
-      alert('Please select a file to upload.')
-      return
+      alert('Please select a file to upload.');
+      return;
     }
-
-    const formData = new FormData()
-    formData.append('file', selectedFile)
-
+  
+    const formData = new FormData();
+    formData.append('file', selectedFile);
+  
     Axios.post(
-      'https://web-production-5ee8.up.railway.app/dashboard/upload',
+      'https://web-production-5ee8.up.railway.app/new',
       formData,
       {
         headers: { Authorization: `Bearer ${token}` },
       }
     )
       .then((response) => {
-        alert('File uploaded successfully.')
-        file.value = ''
-        setSelectedFile(null)
+        alert('File uploaded successfully.');
+        file.value = '';
+        setSelectedFile(null);
+  
+       
+        Axios.post(
+          'API_ENDPOINT', 
+          {
+            stage: 'uip',
+          },
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        )
+          .then((response) => {
+            // Handle successful update of the 'stage'
+            console.log('Stage updated to uip.');
+          })
+          .catch((error) => {
+            // Handle error in updating 'stage'
+            console.log('Error updating stage:', error);
+          });
       })
       .catch((error) => {
-        alert('File upload failed.')
-        console.log(error)
-      })
-  }
+        alert('File upload failed.');
+        console.log(error);
+      });
+  };
 
   if (!user) {
     window.location.href = '/login'

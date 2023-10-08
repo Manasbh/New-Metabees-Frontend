@@ -1,17 +1,46 @@
-import React from "react";
-import { useHistory } from "react-router-dom"; // Import useHistory from react-router-dom
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate for navigation
+import Axios from 'axios';
 import './Published.css';
 
 export default function Published() {
-  const history = useHistory(); // Initialize the useHistory hook
+  const navigate = useNavigate(); // Use useNavigate hook for navigation
+
+  const [isUIP, setIsUIP] = useState(false);
 
   const handleViewLinkClick = () => {
-    history.push("/viewproduct"); // Redirect to /viewproduct
+    navigate("/viewproduct"); // Use navigate method to navigate to "/viewproduct"
   };
 
   const handleDismissClick = () => {
-    history.push("/home"); // Redirect to /home
+    if (!isUIP) {
+      navigate("/dashboard/upload"); // Use navigate method to navigate to "/dashboard/upload"
+    } else {
+      navigate("/home"); // Use navigate method to navigate to "/home"
+    }
   };
+
+  useEffect(() => {
+    Axios.get('YOUR_API_ENDPOINT')
+      .then((response) => {
+        const { stage, published } = response.data;
+
+        if (stage === 'uip' && !published) {
+          setIsUIP(true);
+
+          Axios.post('YOUR_UPDATE_API_ENDPOINT', { published: true })
+            .then(() => {
+              console.log('Published schema updated to true.');
+            })
+            .catch((error) => {
+              console.error('Error updating published schema:', error);
+            });
+        }
+      })
+      .catch((error) => {
+        console.error('Error checking GLTF status:', error);
+      });
+  }, []);
 
   return (
     <div className="notifications-container">
@@ -25,11 +54,15 @@ export default function Published() {
           <div className="success-prompt-wrap">
             <p className="success-prompt-heading">Object uploaded</p>
             <div className="success-prompt-prompt">
-              <p>Your object is now up and running on the internet</p>
+              {isUIP ? (
+                <p>Your object is now up and running on the internet.</p>
+              ) : (
+                <p>Object not in 'uip' stage. Redirecting...</p>
+              )}
             </div>
             <div className="success-button-container">
               <button type="button" className="success-button-main" onClick={handleViewLinkClick}>View Link</button>
-              <button type="button" className="success-button-secondary" onClick={handleDismissClick}>home</button>
+              <button type="button" className="success-button-secondary" onClick={handleDismissClick}>Home</button>
             </div>
           </div>
         </div>

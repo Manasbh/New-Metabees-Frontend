@@ -4,18 +4,18 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import './awitch.css';
 import { useUser } from '../../utils/UserContext';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
 
 const Preview = () => {
   const canvasRef = useRef(null);
   const [scaleFactor, setScaleFactor] = useState(1);
   const user = useUser();
-  const history = useHistory();
+  const navigate = useNavigate(); // Use useNavigate hook for navigation
 
   useEffect(() => {
     if (!user) {
       // If user is not logged in, redirect to /login
-      history.push('/login');
+      navigate('/login');
       return;
     }
 
@@ -71,7 +71,7 @@ const Preview = () => {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, [scaleFactor, user, history]); // Add user and history to the dependency array
+  }, [scaleFactor, user, navigate]); // Add user and navigate to the dependency array
 
   // Function to handle button click and adjust the scale factor
   const handleButtonClick = (factor) => {
@@ -80,7 +80,7 @@ const Preview = () => {
 
   // Function to handle publish button click and redirect to /published
   const handlePublishClick = () => {
-    history.push('/published');
+    navigate('/published'); // Use navigate method to navigate to "/published"
   };
 
   return (
