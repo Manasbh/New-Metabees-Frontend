@@ -5,8 +5,8 @@ import Product from '../../components/products/Product'
 import './ViewProduct.css'
 
 const ViewProduct = () => {
-  const [products, setProducts] = useState([])
-  const token = getCookieByName('aToken')
+  const [products, setProducts] = useState([]);
+  const token = getCookieByName('aToken');
 
   useEffect(() => {
     axios
@@ -14,21 +14,20 @@ const ViewProduct = () => {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
-        setProducts(response.data)
+        setProducts(response.data);
       })
       .catch((error) => {
-        console.error('Error fetching product data:', error)
-      })
-  })
+        console.error('Error fetching product data:', error);
+      });
+  }, []); // Add an empty dependency array to run the effect only once
 
   return (
     <div className="viewprod-bg flex gap-10 max-sm:flex-col items-center justify-center h-screen">
       {products.map((product) => (
-        <Product
-          key={product.id}
-          name={product.name}
-          productUrl={product.productUrl}
-        />
+        <div key={product.id}>
+          <p>{product.name}</p>
+          <Product name={product.name} productUrl={product.productUrl} />
+        </div>
       ))}
       <Product
         name="Test"
@@ -36,7 +35,7 @@ const ViewProduct = () => {
         qrCode="https://upload.wikimedia.org/wikipedia/commons/d/d0/QR_code_for_mobile_English_Wikipedia.svg"
       />
     </div>
-  )
-}
+  );
+};
 
 export default ViewProduct
