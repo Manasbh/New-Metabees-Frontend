@@ -9,27 +9,48 @@ import './LogIn.css'
 function LogIn() {
   const navigate = useNavigate()
   const { setUser } = useContext(UserContext)
+
   const logIn = async (e) => {
     e.preventDefault()
     const email = document.getElementById('email').value
     const password = document.getElementById('password').value
-    await Axios.post(
-      `http://localhost:5000/auth/login`,
-      {
+
+    // Capture the userAuthToken
+    let userAuthToken = '';
+
+    // Create an Axios instance with default headers for authorization
+    const axiosInstance = Axios.create({
+      baseURL: 'https://web-production-5ee8.up.railway.app//auth/login',
+      withCredentials: true, // Include credentials with every request
+      headers: {
+        // Authorization header with userAuthToken
+        Authorization: `Bearer ${userAuthToken}`, // Initialize it as an empty string
+      },
+    })
+
+    try {
+      const response = await axiosInstance.post('/auth/login', {
         email: email,
         password: password,
-      },
-      { withCredentials: true }
-    )
-      .then((response) => {
-        if (response.data) {
-          setUser(getCookieInfo())
-          navigate('/dashboard')
-        }
       })
-      .catch((e) => {
-        console.log(e)
-      })
+
+      // Check if the response contains a token
+      if (response.data && response.data.token) {
+        userAuthToken = response.data.token; // Capture the token
+
+        // Update the Authorization header in axiosInstance
+        axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${userAuthToken}`;
+
+        // Now you can use the updated axiosInstance for authenticated requests
+        // You may also set the userAuthToken in your UserContext here if needed
+
+        setUser(getCookieInfo())
+        navigate('/dashboard')
+      }
+    } catch (error) {
+      console.error(error)
+    }
+  }
   }
   return (
     <div className="login-card">
@@ -104,5 +125,4 @@ function LogIn() {
       </div>
     </div>
   )
-}
 export default LogIn
