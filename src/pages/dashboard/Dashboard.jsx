@@ -4,9 +4,9 @@ import './dashboard.css'
 const Dashboard = () => {
   const { user } = useUser()
 
-  //if (!user) {
-    //window.location.href = '/login'
- // }
+  if (!user) {
+    window.location.href = '/login'
+  }
   return (
     <div className="dashboard-bg">
       <div className="flex max-sm:flex-col items-center justify-center h-screen">
