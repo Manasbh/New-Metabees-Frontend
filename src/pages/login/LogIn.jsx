@@ -6,52 +6,50 @@ import { getCookieInfo } from '../../utils/getCookie'
 import google from '../../assets/ContentImages/google.png'
 import './LogIn.css'
 
+
 function LogIn() {
-  const navigate = useNavigate()
-  const { setUser } = useContext(UserContext)
+  const navigate = useNavigate();
+  const { setUser } = useContext(UserContext);
+
+  const [userAuthToken, setUserAuthToken] = useState(''); // State to store the userAuthToken
 
   const logIn = async (e) => {
-    e.preventDefault()
-    const email = document.getElementById('email').value
-    const password = document.getElementById('password').value
-
-    // Capture the userAuthToken
-    let userAuthToken = '';
+    e.preventDefault();
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
 
     // Create an Axios instance with default headers for authorization
     const axiosInstance = Axios.create({
-      baseURL: 'https://web-production-5ee8.up.railway.app//auth/login',
+      baseURL: 'https://web-production-5ee8.up.railway.app/auth/login', // Replace with your backend URL
       withCredentials: true, // Include credentials with every request
       headers: {
-        // Authorization header with userAuthToken
-        Authorization: `Bearer ${userAuthToken}`, // Initialize it as an empty string
+        Authorization: `Bearer ${userAuthToken}`, // Include the userAuthToken
       },
-    })
+    });
 
     try {
       const response = await axiosInstance.post('/auth/login', {
         email: email,
         password: password,
-      })
+      });
 
       // Check if the response contains a token
       if (response.data && response.data.token) {
-        userAuthToken = response.data.token; // Capture the token
+        const token = response.data.token; // Capture the token
 
-        // Update the Authorization header in axiosInstance
-        axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${userAuthToken}`;
+        // Update the userAuthToken state
+        setUserAuthToken(token);
 
         // Now you can use the updated axiosInstance for authenticated requests
         // You may also set the userAuthToken in your UserContext here if needed
 
-        setUser(getCookieInfo())
-        navigate('/dashboard')
+        setUser(getCookieInfo());
+        navigate('/dashboard');
       }
     } catch (error) {
-      console.error(error)
+      console.error(error);
     }
-  }
-  }
+  };
   return (
     <div className="login-card">
       <div className="login-card2">
@@ -124,5 +122,6 @@ function LogIn() {
         </form>
       </div>
     </div>
-  )
+  );
+  }
 export default LogIn
