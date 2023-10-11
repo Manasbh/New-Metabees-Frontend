@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { useRegisterMutation } from '../../slices/usersApiSlice'
+import { useSignupMutation } from '../../slices/usersApiSlice'
 import { setCredentials } from '../../slices/authSlice'
 import google from '../../assets/ContentImages/google.png'
 import './SignUp.css'
@@ -15,7 +15,7 @@ function SignUp() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  const [register] = useRegisterMutation()
+  const [register] = useSignupMutation()
 
   const submitHandler = async (e) => {
     e.preventDefault()
