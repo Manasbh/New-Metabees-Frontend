@@ -5,6 +5,7 @@ import {
   Navigate,
 } from 'react-router-dom'
 import Navbar from './components/navbar/Navbar'
+import PrivateRoute from './components/PrivateRoute/PrivateRoute'
 import SignUp from './pages/signup/SignUp'
 import LogIn from './pages/login/LogIn'
 import Home from './pages/home/Home'
@@ -34,19 +35,21 @@ function App() {
         <Route path="/waitlist" element={<Waitlist />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<LogIn />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/dashboard/upload" element={<Upload />} />
-        <Route path="/viewproduct" element={<ViewProduct />} />
-        <Route path="/marketplace" element={<Market />} />
         <Route path="/forgotpassword" element={<ForgotPassword />} />
-        <Route path="/preview" element={<Preview />} />
         <Route
           path="/auth/reset-password/:id/:token"
           element={<PasswordReset />}
         />
-        <Route path="/published" element={<Published />} />
-
         <Route path="*" element={<Navigate to="/login" replace />} />
+
+        <Route path="" element={<PrivateRoute />}>
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/dashboard/upload" element={<Upload />} />
+          <Route path="/viewproduct" element={<ViewProduct />} />
+          <Route path="/marketplace" element={<Market />} />
+          <Route path="/preview" element={<Preview />} />
+          <Route path="/published" element={<Published />} />
+        </Route>
       </Routes>
     </Router>
   )

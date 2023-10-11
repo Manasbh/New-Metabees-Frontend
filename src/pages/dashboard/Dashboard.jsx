@@ -2,11 +2,11 @@ import { useSelector } from 'react-redux'
 import './dashboard.css'
 
 const Dashboard = () => {
-  const { userInfo } = useSelector((state) => state.auth)
+  // const { userInfo } = useSelector((state) => state.auth)
 
-  if (!userInfo) {
-    window.location.href = '/login'
-  }
+  // if (!userInfo) {
+  //   window.location.href = '/login'
+  // }
 
   return (
     <div className="dashboard-bg">
