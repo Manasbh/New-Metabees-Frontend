@@ -14,6 +14,7 @@ export function getCookieInfo() {
   try {
     let token = getCookieByName('aToken')
     const decodedToken = jwtDecode(token)
+    localStorage.setItem('userId', decodedToken.id)
     return decodedToken.id
   } catch (e) {}
   return false
