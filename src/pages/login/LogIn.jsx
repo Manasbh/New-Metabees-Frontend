@@ -19,10 +19,17 @@ function LogIn() {
         email: email,
         password: password,
       },
-      { withCredentials: true }
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        withCredentials: true,
+      }
     )
       .then((response) => {
         if (response.data) {
+          const aToken = response.headers.get('Set-Cookie')
+          document.cookie = aToken
           setUser(getCookieInfo())
           navigate('/dashboard')
         }
