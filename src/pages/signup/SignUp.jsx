@@ -20,18 +20,18 @@ function SignUp() {
   const submitHandler = async (e) => {
     e.preventDefault()
 
-    if (password !== confirmPassword) {
-      alert('Passwords do not match')
-      return
-    } else {
-      try {
-        const res = await register({ name, email, password }).unwrap()
-        dispatch(setCredentials({ ...res }))
-        navigate('/dashboard')
-      } catch (error) {
-        console.log(error)
-      }
-    }
+    // if (password !== confirmPassword) {
+    //   alert('Passwords do not match')
+    //   return
+    // } else {
+    //   try {
+    //     const res = await register({ name, email, password }).unwrap()
+    //     dispatch(setCredentials({ ...res }))
+    //     navigate('/dashboard')
+    //   } catch (error) {
+    //     console.log(error)
+    //   }
+    // }
   }
 
   return (
