@@ -2,13 +2,7 @@ import { useUser } from '../../utils/UserContext'
 import './dashboard.css'
 
 const Dashboard = () => {
-  // const { user } = useUser()
-
-  // if (!user) {
-  //   window.location.href = '/login'
-  // }
-
-  const user = localStorage.getItem('userId')
+  const { user } = useUser()
 
   if (!user) {
     window.location.href = '/login'
