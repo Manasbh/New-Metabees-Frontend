@@ -120,7 +120,7 @@ function Navbar() {
               <button
                 type="button"
                 className="navbar-login-btn"
-                onClick={() => navigate('/signup')}
+                onClick={() => navigate('/login')}
               >
                 Sign In
               </button>
@@ -209,7 +209,7 @@ function Navbar() {
                     <button
                       type="button"
                       className="navbar-login-btn"
-                      onClick={() => navigate('/signup')}
+                      onClick={() => navigate('/login')}
                     >
                       Sign In
                     </button>
