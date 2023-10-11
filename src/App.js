@@ -19,7 +19,6 @@ import Dashboard from './pages/dashboard/Dashboard'
 import Upload from './pages/addproduct/Upload'
 import ViewProduct from './pages/viewproduct/ViewProduct'
 import Market from './pages/marketplace/Market'
-import { UserContextProvider } from './utils/UserContext'
 import Preview from './pages/previewobj/prev'
 import Published from './pages/Published/Published'
 
