@@ -1,10 +1,10 @@
-import { useUser } from '../../utils/UserContext'
+import { useSelector } from 'react-redux'
 import './dashboard.css'
 
 const Dashboard = () => {
-  const { user } = useUser()
+  const { userInfo } = useSelector((state) => state.auth)
 
-  if (!user) {
+  if (!userInfo) {
     window.location.href = '/login'
   }
 

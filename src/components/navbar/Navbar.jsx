@@ -1,10 +1,9 @@
-'use client'
-
 import { useState } from 'react'
 import { useNavigate } from 'react-router'
 import { Menu, X } from 'lucide-react'
-import { delete_cookie } from '../../utils/getCookie'
-import { useUser } from '../../utils/UserContext'
+import { useLogoutMutation } from '../../slices/usersApiSlice'
+import { logout } from '../../slices/authSlice'
+import { useSelector, useDispatch } from 'react-redux'
 import logo from '../../assets/logo.png'
 import './Navbar.css'
 
@@ -24,9 +23,12 @@ const menuItems = [
 ]
 
 function Navbar() {
-  const { user } = useUser()
   const navigate = useNavigate()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const { userInfo } = useSelector((state) => state.auth)
+
+  const [logoutApiCall] = useLogoutMutation()
+  const dispatch = useDispatch()
 
   const [color, setColor] = useState(false)
   const changeColor = () => {
@@ -40,6 +42,16 @@ function Navbar() {
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
+  }
+
+  const logoutHandler = async () => {
+    try {
+      await logoutApiCall().unwrap()
+      dispatch(logout())
+      navigate('/login')
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
@@ -94,15 +106,12 @@ function Navbar() {
           </ul>
         </div>
         <div className="hidden lg:block">
-          {user && (
+          {userInfo && (
             <div className="flex gap-3">
               <button
                 type="button"
                 className="navbar-login-btn"
-                onClick={() => {
-                  delete_cookie('aToken')
-                  window.location.reload()
-                }}
+                onClick={logoutHandler}
               >
                 Log out
               </button>
@@ -115,7 +124,7 @@ function Navbar() {
               </button>
             </div>
           )}
-          {!user && (
+          {!userInfo && (
             <div className="flex gap-3">
               <button
                 type="button"
@@ -176,15 +185,12 @@ function Navbar() {
                     ))}
                   </nav>
                 </div>
-                {user && (
+                {userInfo && (
                   <div>
                     <button
                       type="button"
                       className="navbar-login-btn mt-5"
-                      onClick={() => {
-                        delete_cookie('aToken')
-                        window.location.reload()
-                      }}
+                      onClick={logoutHandler}
                     >
                       Logout
                     </button>
@@ -197,7 +203,7 @@ function Navbar() {
                     </button>
                   </div>
                 )}
-                {!user && (
+                {!userInfo && (
                   <div>
                     <button
                       type="button"

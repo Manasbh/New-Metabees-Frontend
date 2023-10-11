@@ -1,47 +1,36 @@
-import { useContext } from 'react'
+import { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { useLoginMutation } from '../../slices/usersApiSlice'
+import { setCredentials } from '../../slices/authSlice'
 import { useNavigate } from 'react-router-dom'
-import Axios from 'axios'
-import { UserContext } from '../../utils/UserContext'
-import { getCookieInfo } from '../../utils/getCookie'
 import google from '../../assets/ContentImages/google.png'
 import './LogIn.css'
 
 function LogIn() {
   const navigate = useNavigate()
-  const { setUser } = useContext(UserContext)
-  const logIn = async (e) => {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+  const dispatch = useDispatch()
+
+  const [login] = useLoginMutation()
+
+  const submitHandler = async (e) => {
     e.preventDefault()
-    const email = document.getElementById('email').value
-    const password = document.getElementById('password').value
-    await Axios.post(
-      `https://web-production-5ee8.up.railway.app/auth/login`,
-      {
-        email: email,
-        password: password,
-      },
-      {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        withCredentials: true,
-      }
-    )
-      .then((response) => {
-        if (response.data) {
-          const aToken = response.headers.get('Set-Cookie')
-          document.cookie = aToken
-          setUser(getCookieInfo())
-          navigate('/dashboard')
-        }
-      })
-      .catch((e) => {
-        console.log(e)
-      })
+
+    try {
+      const res = await login({ email, password }).unwrap()
+      dispatch(setCredentials({ ...res }))
+      navigate('/dashboard')
+    } catch (error) {
+      console.log(error)
+    }
   }
+
   return (
     <div className="login-card">
       <div className="login-card2">
-        <form className="login-form">
+        <form className="login-form" onSubmit={submitHandler}>
           <p id="login-heading">Login</p>
           <div className="login-field">
             <svg
@@ -60,6 +49,8 @@ function LogIn() {
               placeholder="Email"
               autocomplete="off"
               id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           <div className="login-field">
@@ -78,10 +69,12 @@ function LogIn() {
               className="login-input-field"
               placeholder="Password"
               id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
           <div className="flex flex-col items-center justify-center">
-            <button className="login-button1" onClick={(e) => logIn(e)}>
+            <button type="submit" className="login-button1">
               Login
             </button>
             <button

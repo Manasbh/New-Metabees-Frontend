@@ -1,4 +1,9 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from 'react-router-dom'
 import Navbar from './components/navbar/Navbar'
 import SignUp from './pages/signup/SignUp'
 import LogIn from './pages/login/LogIn'
@@ -19,32 +24,32 @@ import Published from './pages/Published/Published'
 
 function App() {
   return (
-    <UserContextProvider>
-      <Router>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/view" element={<View />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/waitlist" element={<Waitlist />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/login" element={<LogIn />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/dashboard/upload" element={<Upload />} />
-          <Route path="/viewproduct" element={<ViewProduct />} />
-          <Route path="/marketplace" element={<Market />} />
-          <Route path="/forgotpassword" element={<ForgotPassword />} />
-          <Route path="/preview" element={<Preview />} />
-          <Route path="/auth/reset-password/:id/:token" element={<PasswordReset />} />
-          <Route path="/published" element={<Published />} />
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/view" element={<View />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/waitlist" element={<Waitlist />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/login" element={<LogIn />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard/upload" element={<Upload />} />
+        <Route path="/viewproduct" element={<ViewProduct />} />
+        <Route path="/marketplace" element={<Market />} />
+        <Route path="/forgotpassword" element={<ForgotPassword />} />
+        <Route path="/preview" element={<Preview />} />
+        <Route
+          path="/auth/reset-password/:id/:token"
+          element={<PasswordReset />}
+        />
+        <Route path="/published" element={<Published />} />
 
-          <Route path="*" element={<Navigate to="/login" replace />} />
-        </Routes>
-      </Router>
-    </UserContextProvider>
+        <Route path="*" element={<Navigate to="/login" replace />} />
+      </Routes>
+    </Router>
   )
 }
 
 export default App
-
