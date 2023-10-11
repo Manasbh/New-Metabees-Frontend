@@ -1,56 +1,44 @@
-import Axios from 'axios'
-import { useState, useContext } from 'react'
-import { useNavigate } from 'react-router'
-import { UserContext } from '../../utils/UserContext'
-import { getCookieInfo } from '../../utils/getCookie'
+import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { useRegisterMutation } from '../../slices/usersApiSlice'
+import { setCredentials } from '../../slices/authSlice'
 import google from '../../assets/ContentImages/google.png'
 import './SignUp.css'
 
 function SignUp() {
-  const navigate = useNavigate()
-  const [error, setError] = useState('')
-  const { setUser } = useContext(UserContext)
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
 
-  const signUp = async (e) => {
-    const email = document.getElementById('email').value
-    const fullname = document.getElementById('fullname').value
-    const password = document.getElementById('password').value
-    const comfirmPassowrd = document.getElementById('confirm-password').value
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+  const [register] = useRegisterMutation()
+
+  const submitHandler = async (e) => {
     e.preventDefault()
 
-    if (comfirmPassowrd !== password) {
-      setError('Confirm password do not match password!')
-      setTimeout(() => setError(''), 3000)
+    if (password !== confirmPassword) {
+      alert('Passwords do not match')
       return
+    } else {
+      try {
+        const res = await register({ name, email, password }).unwrap()
+        dispatch(setCredentials({ ...res }))
+        navigate('/dashboard')
+      } catch (error) {
+        console.log(error)
+      }
     }
-
-    await Axios.post(
-      'https://web-production-5ee8.up.railway.app/auth/signup',
-      {
-        email: email,
-        fullname: fullname,
-        password: password,
-        googleId: Math.random().toString(),
-      },
-      { withCredentials: true }
-    )
-      .then((response) => {
-        if (response.status === 200) {
-          setUser(getCookieInfo())
-          navigate('/dashboard')
-        }
-      })
-      .catch((e) => {
-        console.log(e)
-      })
   }
 
   return (
     <div className="signup-card">
       <div className="signup-card2">
-        <form className="signup-form">
+        <form className="signup-form" onSubmit={submitHandler}>
           <p id="signup-heading">Sign Up</p>
-          <p className="text-red-500">{error}</p>
           <div className="signup-field">
             <svg
               viewBox="0 0 16 16"
@@ -68,6 +56,8 @@ function SignUp() {
               placeholder="Full Name"
               autocomplete="off"
               id="fullname"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
             />
           </div>
           <div className="signup-field">
@@ -87,6 +77,8 @@ function SignUp() {
               placeholder="Email"
               autocomplete="off"
               id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           <div className="signup-field">
@@ -105,6 +97,8 @@ function SignUp() {
               className="signup-input-field"
               placeholder="Password"
               id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
           <div className="signup-field">
@@ -123,9 +117,11 @@ function SignUp() {
               className="signup-input-field"
               placeholder="Confirm Password"
               id="confirm-password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
             />
           </div>
-          <button className="signup-button2 mt-6" onClick={(e) => signUp(e)}>
+          <button type="submit" className="signup-button2 mt-6">
             Sign Up
           </button>
           <div className="mb-5 flex flex-col items-center">
