@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Axios from 'axios'
 import { UserContext } from '../../utils/UserContext'
@@ -6,51 +6,31 @@ import { getCookieInfo } from '../../utils/getCookie'
 import google from '../../assets/ContentImages/google.png'
 import './LogIn.css'
 
-
-
 function LogIn() {
-  const navigate = useNavigate();
-  const { setUser } = useContext(UserContext);
-
-  const [userAuthToken, setUserAuthToken] = useState(''); // State to store the userAuthToken
-
+  const navigate = useNavigate()
+  const { setUser } = useContext(UserContext)
   const logIn = async (e) => {
-    e.preventDefault();
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-
-    // Create an Axios instance with default headers for authorization
-    const axiosInstance = Axios.create({
-      baseURL: 'https://web-production-5ee8.up.railway.app/auth/login', // Replace with your backend URL
-      withCredentials: true, // Include credentials with every request
-      headers: {
-        Authorization: `Bearer ${userAuthToken}`, // Include the userAuthToken
-      },
-    });
-
-    try {
-      const response = await axiosInstance.post('/auth/login', {
+    e.preventDefault()
+    const email = document.getElementById('email').value
+    const password = document.getElementById('password').value
+    await Axios.post(
+      `http://localhost:5000/auth/login`,
+      {
         email: email,
         password: password,
-      });
-
-      // Check if the response contains a token
-      if (response.data && response.data.token) {
-        const token = response.data.token; // Capture the token
-
-        // Update the userAuthToken state
-        setUserAuthToken(token);
-
-        // Now you can use the updated axiosInstance for authenticated requests
-        // You may also set the userAuthToken in your UserContext here if needed
-
-        setUser(getCookieInfo());
-        navigate('/dashboard');
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
+      },
+      { withCredentials: true }
+    )
+      .then((response) => {
+        if (response.data) {
+          setUser(getCookieInfo())
+          navigate('/dashboard')
+        }
+      })
+      .catch((e) => {
+        console.log(e)
+      })
+  }
   return (
     <div className="login-card">
       <div className="login-card2">
@@ -123,6 +103,6 @@ function LogIn() {
         </form>
       </div>
     </div>
-  );
-  }
+  )
+}
 export default LogIn
