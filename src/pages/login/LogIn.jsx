@@ -14,7 +14,7 @@ function LogIn() {
     const email = document.getElementById('email').value
     const password = document.getElementById('password').value
     await Axios.post(
-      `http://localhost:5000/auth/login`,
+      `https://web-production-5ee8.up.railway.app/auth/login`,
       {
         email: email,
         password: password,
