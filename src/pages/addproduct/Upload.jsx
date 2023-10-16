@@ -1,12 +1,13 @@
 import { useState } from 'react'
 import Axios from 'axios'
-import { getCookieByName } from '../../utils/getCookie'
+import { useSelector } from 'react-redux'
 import './Upload.css'
 
 const Upload = () => {
   const [selectedFile, setSelectedFile] = useState(null)
   const file = document.getElementById('fileInput')
-  const token = getCookieByName('aToken')
+  const { userInfo } = useSelector((state) => state.auth)
+  const userId = userInfo._id
 
   const handleFileUpload = (event) => {
     event.preventDefault()
@@ -18,35 +19,19 @@ const Upload = () => {
     const formData = new FormData()
     formData.append('file', selectedFile)
 
-    Axios.post('https://web-production-5ee8.up.railway.app/new', formData, {
-      headers: { Authorization: `Bearer ${token}` },
+    Axios.post('http://localhost:5000/api/upload', {
+      userId: userId,
+      formData: formData,
     })
-      .then((response) => {
+      .then((res) => {
+        console.log(res)
         alert('File uploaded successfully.')
         file.value = ''
         setSelectedFile(null)
-
-        Axios.post(
-          'API_ENDPOINT',
-          {
-            stage: 'uip',
-          },
-          {
-            headers: { Authorization: `Bearer ${token}` },
-          }
-        )
-          .then((response) => {
-            // Handle successful update of the 'stage'
-            console.log('Stage updated to uip.')
-          })
-          .catch((error) => {
-            // Handle error in updating 'stage'
-            console.log('Error updating stage:', error)
-          })
       })
-      .catch((error) => {
+      .catch((err) => {
+        console.log(err)
         alert('File upload failed.')
-        console.log(error)
       })
   }
 
