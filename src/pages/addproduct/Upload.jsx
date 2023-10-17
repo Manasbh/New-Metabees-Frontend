@@ -19,10 +19,7 @@ const Upload = () => {
     const formData = new FormData()
     formData.append('file', selectedFile)
 
-    Axios.post('https://web-production-5ee8.up.railway.app/api/new', {
-      userId: userId,
-      formData: formData,
-    })
+    Axios.post('https://web-production-5ee8.up.railway.app/api/new')
       .then((res) => {
         console.log(res)
         alert('File uploaded successfully.')
