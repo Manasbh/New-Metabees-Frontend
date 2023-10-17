@@ -19,7 +19,7 @@ const Upload = () => {
     const formData = new FormData()
     formData.append('file', selectedFile)
 
-    Axios.post('http://web-production-5ee8.up.railway.app//api/upload', {
+    Axios.post('https://web-production-5ee8.up.railway.app/api/upload', {
       userId: userId,
       formData: formData,
     })
