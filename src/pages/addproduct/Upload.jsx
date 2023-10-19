@@ -15,49 +15,6 @@ const Upload = () => {
       alert('Please select a file to upload.')
       return
     }
-<<<<<<< HEAD
-=======
-  
-    const formData = new FormData();
-    formData.append('file', selectedFile);
-  
-    Axios.post(
-      'https://web-production-5ee8.up.railway.app/upload',
-      formData,
-      {
-        headers: { Authorization: `Bearer ${token}` },
-      }
-    )
-      .then((response) => {
-        alert('File uploaded successfully.');
-        file.value = '';
-        setSelectedFile(null);
-  
-       
-        Axios.post(
-          'API_ENDPOINT', 
-          {
-            stage: 'uip',
-          },
-          {
-            headers: { Authorization: `Bearer ${token}` },
-          }
-        )
-          .then((response) => {
-            // Handle successful update of the 'stage'
-            console.log('Stage updated to uip.');
-          })
-          .catch((error) => {
-            // Handle error in updating 'stage'
-            console.log('Error updating stage:', error);
-          });
-      })
-      .catch((error) => {
-        alert('File upload failed.');
-        console.log(error);
-      });
-  };
->>>>>>> 92a178b3fb64cff99a5d2614cf1c2afb1c652333
 
     const formData = new FormData()
     formData.append('file', selectedFile)
