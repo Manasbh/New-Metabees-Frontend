@@ -30,7 +30,7 @@ function LogIn() {
   return (
     <div className="login-card">
       <div className="login-card2">
-        <form className="login-form" onSubmit={submitHandler}>
+        <form className="login-form" >
           <p id="login-heading">Login</p>
           <div className="login-field">
             <svg
@@ -74,7 +74,7 @@ function LogIn() {
             />
           </div>
           <div className="flex flex-col items-center justify-center">
-            <button type="submit" className="login-button1">
+            <button type="button" className="login-button1" onClick="submitHandler">
               Login
             </button>
             <button
